@@ -4,12 +4,11 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Blogger.Contracts
+namespace ApplicationServices.Contracts
 {
-    public interface IBlogCreator
+    public interface IBloggingService
     {
         public Task CreateDraft(Blog blog);
         public Task CreateBlog(Blog blog);
-
     }
 }

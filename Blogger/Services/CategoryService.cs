@@ -9,17 +9,16 @@ using System.Threading.Tasks;
 namespace Blogger.Services
 {
     public class CategoryService : ICategoryService
-    {
-        public async Task<bool> CheckIfCategoryExists(string name)
+    {   
+
+         async Task<bool> ICategoryService.CheckIfCategoryExists(string name)
         {
-            //fetch category by name
             return await Task<bool>.Run(() => true);
         }
 
-        public Task<Data.Category> SaveCategory(Category category)
+         async Task<Data.Category> ICategoryService.SaveCategory(Entities.Category category)
         {
             return null;
-           // Save it later
         }
     }
 }

@@ -1,0 +1,31 @@
+
+<form class="example-form" [formGroup]="userLoginFormGroup" (onSubmit)="OnSubmit()">
+    <mat-form-field class="example-full-width">
+        <mat-label>First Name</mat-label>
+        <input formControlName="firstName" matInput>      
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>Last Name</mat-label>
+        <input formControlName="lastName" matInput>      
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="email" [errorStateMatcher]="matcher"
+           placeholder="Ex. pat@example.com">
+    <mat-error *ngIf="userLoginFormGroup.get('email').hasError('email') && !userLoginFormGroup.get('email').hasError('required')">
+      Please enter a valid email address
+    </mat-error>
+    <mat-error *ngIf="userLoginFormGroup.get('email').hasError('required')">
+      Email is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>Password</mat-label>
+        <input type='password' matInput formControlName="password">      
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>Confirm Password</mat-label>
+        <input type='password' matInput formControlName="confirmPassword">      
+    </mat-form-field>
+    <button mat-raised-button color="primary" class="submit" type="submit">Submit</button>
+  </form>

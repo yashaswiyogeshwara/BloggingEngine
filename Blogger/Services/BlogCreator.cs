@@ -35,6 +35,23 @@ namespace Blogger.Services
                 throw new Exception("Error while Creating Blog", ex.InnerException);
             }
         }
+        public async Task CreateBlog(Interactors.Blog blog)
+        {
+            try
+            {
+                Entities.Blog draft = new Entities.Blog();
+                draft.Title = blog.Title;
+                draft.Body = blog.Body;
+                draft.IsPublished = true;
+                await draft.AddHashtags(blog.Hashtags,categoryService).ConfigureAwait(false);
+                await SaveBlog(draft).ConfigureAwait(false);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message, ex.InnerException);
+            }
+        }
+
 
         private async Task SaveBlog(Blog draft) {
             await Task.Run(() => { }); // Task.Run() not to be used in I/O bound tasks and should only be used for CPU bound tasks.

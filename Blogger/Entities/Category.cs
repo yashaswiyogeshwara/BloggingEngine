@@ -17,7 +17,7 @@ namespace Blogger.Entities
         public string Name { get;}
         public string Description { get; }
 
-        public static async Task<Category> Create(string name, string Description, ICategoryService categoryService) {
+        internal static async Task<Category> Create(string name, string Description, ICategoryService categoryService) {
             var newCategory = new Category(name, Description);
             if (await categoryService.CheckIfCategoryExists(name) == false)
             {

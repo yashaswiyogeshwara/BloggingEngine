@@ -11,7 +11,8 @@ namespace Blogger.Entities
         private Hashtag(string name) : base(name, null){
             
         }
-        public async static Task<Hashtag> Create(string name, ICategoryService categoryService) {
+        internal async static Task<Hashtag> Create(string name, ICategoryService categoryService) {
+            
             await Create(name, null, categoryService);
             return new Hashtag(name);
         }

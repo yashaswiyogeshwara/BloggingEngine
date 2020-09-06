@@ -43,7 +43,17 @@ namespace BloggerTests
             var exception = await Record.ExceptionAsync(() => blogCreater.CreateDraft(foodBlog));
             Assert.Null(exception);
         }
-
+        [Fact]
+        public async void AddBlogWithCategories()
+        {
+            Blog foodBlog = new Blog();
+            foodBlog.Hashtags = new List<string>() { "food", "italian", "lasanga" };
+            foodBlog.Title = "An Italian Food Blog";
+            ICategoryService categoryService = new CategoryService();
+            IBlogCreator blogCreater = new BlogCreator(categoryService);
+            var exception = await Record.ExceptionAsync(() => blogCreater.CreateBlog(foodBlog));
+            Assert.Null(exception);
+        }
 
 
     }
